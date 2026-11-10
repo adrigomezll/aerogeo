@@ -10,3 +10,4 @@ Route::get('/', function () {
 Route::get('/login', [LoginController::class, 'loginForm'])->name('login.form');
 
 
+Route::view('/register', 'register')->name('register');
