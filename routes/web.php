@@ -6,5 +6,4 @@ Route::get('/', function () {
     return view('landing');
 });
 
-
-
+Route::view('/register', 'register')->name('register');
