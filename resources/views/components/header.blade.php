@@ -15,7 +15,7 @@
                 <option value="ca" class="text-slate-900">CA</option>
                 <option value="en" class="text-slate-900">EN</option>
             </select>
-            <a href="#embarcar" class="rounded-full bg-[#FFD100] px-4 py-2 text-sm font-bold text-[#002B49] shadow-sm shadow-black/10 transition hover:bg-yellow-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#002B49] sm:px-5">
+            <a href="{{ route('login.form') }}" class="rounded-full bg-[#FFD100] px-4 py-2 text-sm font-bold text-[#002B49] shadow-sm shadow-black/10 transition hover:bg-yellow-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#002B49] sm:px-5">
                 Embarcarse
             </a>
         </nav>

@@ -107,51 +107,27 @@
 
     <section id="embarcar" class="relative isolate overflow-hidden bg-[#001B30] px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
         <div aria-hidden="true" class="absolute -bottom-40 -left-24 h-96 w-96 rounded-full bg-[#0072CE]/20 blur-3xl"></div>
-        <div class="relative mx-auto grid max-w-7xl overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-[#07395D] to-[#002B49] shadow-2xl lg:grid-cols-[0.9fr_1.1fr]">
-            <div class="flex flex-col justify-between gap-10 p-7 sm:p-10 lg:p-12">
-                <div class="flex flex-col items-start gap-6">
-                    <span class="inline-flex items-center gap-2 rounded-full border border-[#FFD100]/40 bg-[#FFD100]/10 px-4 py-2 text-sm font-semibold text-[#FFD100]">
-                        <span aria-hidden="true">✦</span> Tu próxima aventura te espera
-                    </span>
-                    <div class="flex flex-col gap-4">
-                        <h2 class="text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
-                            Sube a bordo de <span class="text-[#FFD100]">AeroGeo</span>
-                        </h2>
-                        <p class="max-w-lg leading-relaxed text-slate-300">
-                            Déjanos tus datos y prepárate para descubrir nuevos juegos, destinos e historias. El viaje no ha hecho más que empezar.
-                        </p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-4 border-t border-white/10 pt-6">
-                    <img src="{{ asset('images/aeroGeoLogo.png') }}" alt="" class="h-14 w-14 object-contain">
-                    <div class="flex flex-col gap-1">
-                        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">AeroGeo</span>
-                        <span class="font-semibold text-white">Aprende. Explora. Despega.</span>
-                    </div>
-                </div>
+        <div class="relative mx-auto flex max-w-4xl flex-col items-center gap-7 rounded-[2rem] border border-white/10 bg-gradient-to-br from-[#07395D] to-[#002B49] p-8 text-center shadow-2xl sm:p-12 lg:p-16">
+            <span class="inline-flex items-center gap-2 rounded-full border border-[#FFD100]/40 bg-[#FFD100]/10 px-4 py-2 text-sm font-semibold text-[#FFD100]">
+                <span aria-hidden="true">✦</span> Un proyecto para aprender creando
+            </span>
+            <div class="flex flex-col gap-5">
+                <h2 class="text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
+                    ¿Por qué nace <span class="text-[#FFD100]">AeroGeo</span>?
+                </h2>
+                <p class="mx-auto max-w-2xl text-lg leading-relaxed text-slate-300">
+                    AeroGeo nació como un proyecto de clase realizado por estudiantes de DAW2A. Queríamos convertir lo aprendido durante el curso en una experiencia educativa, creativa y entretenida.
+                </p>
+                <p class="mx-auto max-w-2xl leading-relaxed text-slate-300">
+                    A través de juegos, mapas y aventuras, esta web une el desarrollo web con nuestra pasión por aprender y explorar. Es el resultado del trabajo en equipo, la imaginación y las ganas de seguir creciendo como desarrolladores.
+                </p>
             </div>
-
-            <div class="bg-white p-7 sm:p-10 lg:p-12">
-                <div class="mb-8 flex flex-col gap-2">
-                    <span class="text-sm font-bold uppercase tracking-[0.2em] text-[#0072CE]">Tarjeta de embarque</span>
-                    <h3 class="text-2xl font-extrabold tracking-tight text-[#002B49]">Reserva tu plaza</h3>
-                    <p class="text-sm leading-relaxed text-slate-600">Completa tus datos para recibir novedades de nuestros próximos vuelos.</p>
+            <div class="flex items-center gap-4 border-t border-white/10 pt-6">
+                <img src="{{ asset('images/aeroGeoLogo.png') }}" alt="" class="h-14 w-14 object-contain">
+                <div class="flex flex-col items-start gap-1 text-left">
+                    <span class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Proyecto de clase</span>
+                    <span class="font-semibold text-white">DAW2A · Aprende. Explora. Despega.</span>
                 </div>
-
-                <form onsubmit="event.preventDefault(); alert('¡Gracias por embarcarte!');" class="flex flex-col gap-5">
-                    <div class="flex flex-col gap-2">
-                        <label for="nombre" class="text-sm font-semibold text-slate-700">Nombre y apellidos</label>
-                        <input id="nombre" name="nombre" type="text" autocomplete="name" placeholder="¿Cómo te llamas?" required class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 placeholder:text-slate-400 transition focus:border-[#0072CE] focus:bg-white focus:outline-none focus:ring-4 focus:ring-[#0072CE]/10">
-                    </div>
-                    <div class="flex flex-col gap-2">
-                        <label for="email" class="text-sm font-semibold text-slate-700">Correo electrónico</label>
-                        <input id="email" name="email" type="email" autocomplete="email" placeholder="tu@correo.com" required class="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 placeholder:text-slate-400 transition focus:border-[#0072CE] focus:bg-white focus:outline-none focus:ring-4 focus:ring-[#0072CE]/10">
-                    </div>
-                    <button type="submit" class="mt-1 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#FFD100] px-6 py-3.5 font-bold text-[#002B49] shadow-lg shadow-[#FFD100]/20 transition hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-[#FFD100] focus:ring-offset-2 focus:ring-offset-white">
-                        Confirmar embarque <span aria-hidden="true">→</span>
-                    </button>
-                    <p class="text-center text-xs leading-relaxed text-slate-500">Tus datos se usarán únicamente para esta experiencia de demostración.</p>
-                </form>
             </div>
         </div>
     </section>

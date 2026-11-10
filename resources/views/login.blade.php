@@ -125,7 +125,7 @@
                 <!-- Enlace a registro -->
                 <p class="text-center text-xs text-gray-500 mt-6">
                     Encara no tens compte?
-                    <a href="#" class="font-bold text-[#0b4c74] hover:underline">Registra't</a>
+                    <a href="{{ route('register') }}" class="font-bold text-[#0b4c74] hover:underline">Registra't</a>
                 </p>
 
             </div>
