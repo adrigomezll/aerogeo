@@ -12,7 +12,7 @@
             <nav aria-label="Navegación del pie de página" class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold">
                 <a href="#storytelling" class="transition-colors hover:text-[#FFD100] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD100]">Storytelling</a>
                 <a href="#juegos" class="transition-colors hover:text-[#FFD100] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD100]">Juegos</a>
-                <a href="#embarcar" class="transition-colors hover:text-[#FFD100] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD100]">Embarcarse</a>
+                <a href="{{ route('login.form') }}" class="transition-colors hover:text-[#FFD100] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD100]">Embarcarse</a>
                 <a href="#equipo" class="transition-colors hover:text-[#FFD100] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD100]">Equipo</a>
             </nav>
         </div>
