@@ -13,7 +13,7 @@
                 <div class="flex flex-col gap-5">
                     <h1 class="max-w-2xl text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
                         El mundo es enorme.
-                        <span class="text-[#FFD100]">Aprenderlo puede ser una aventura.</span>
+                        <span class="text-[#FFD100]">Aprenderlo puede ser una aventura</span>
                     </h1>
                     <p class="max-w-xl text-lg leading-relaxed text-slate-200 sm:text-xl">
                         Súbete a bordo de AeroGeo y descubre juegos educativos inspirados en la navegación aérea y en lugares reales. De las comunidades de España a las calles de Barcelona, cada destino es una nueva misión.
