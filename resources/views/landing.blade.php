@@ -79,9 +79,9 @@
                             <h3 class="text-xl font-bold leading-snug text-[#002B49]">Búsqueda del motor perdido</h3>
                             <p class="leading-relaxed text-slate-600">Explora Barcelona y visita sus monumentos para seguir las pistas. ¿Podrás descubrir dónde se esconde el motor perdido?</p>
                         </div>
-                        <button class="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0072CE] px-5 py-3 font-bold text-white transition-colors hover:bg-[#005CA8] focus:outline-none focus:ring-2 focus:ring-[#0072CE] focus:ring-offset-2">
+                        <a href="{{ route('juegoAdri') }}" class="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0072CE] px-5 py-3 font-bold text-white transition-colors hover:bg-[#005CA8] focus:outline-none focus:ring-2 focus:ring-[#0072CE] focus:ring-offset-2">
                             Jugar ahora <span aria-hidden="true">→</span>
-                        </button>
+                        </a>
                     </div>
                 </article>
 
