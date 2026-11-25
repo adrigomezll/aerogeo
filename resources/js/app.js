@@ -1,1 +1,1 @@
-//
+import './juegoAdri.js'; //importamos el archivo para que el vite tambien lo cargue
