@@ -62,9 +62,10 @@
                             <h3 class="text-xl font-bold leading-snug text-[#002B49]">Localización del aterrizaje</h3>
                             <p class="leading-relaxed text-slate-600">Un avión necesita encontrar un lugar seguro para aterrizar. Arrastra los nombres de comunidades autónomas y ciudades hasta su ubicación correcta en el mapa.</p>
                         </div>
-                        <button class="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0072CE] px-5 py-3 font-bold text-white transition-colors hover:bg-[#005CA8] focus:outline-none focus:ring-2 focus:ring-[#0072CE] focus:ring-offset-2">
+                        {{-- Juego 1: lleva al menú de niveles (si no hay sesión, el middleware manda al login) --}}
+                        <a href="{{ route('inicioPiloto') }}" class="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0072CE] px-5 py-3 font-bold text-white transition-colors hover:bg-[#005CA8] focus:outline-none focus:ring-2 focus:ring-[#0072CE] focus:ring-offset-2">
                             Jugar ahora <span aria-hidden="true">→</span>
-                        </button>
+                        </a>
                     </div>
                 </article>
 

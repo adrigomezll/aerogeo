@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>AeroGeo - Nivel {{ $numeroNivel }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -109,7 +110,8 @@
             <div id="mapa" data-siguiente="{{ $siguiente }}" data-nivel-siguiente="{{ $numeroNivel + 1 }}"
                 class="relative mt-8 w-full rounded-2xl border border-white/20 bg-cover bg-center"
                 style="aspect-ratio: {{ $nivel['ancho'] }} / {{ $nivel['alto'] }};
-                       background-image: url('{{ asset('images/' . $nivel['mapa']) }}');">
+                       background-image: url('{{ asset('images/' . $nivel['mapa']) }}');"
+                       data-completar="{{ route('completar', $numeroNivel) }}">
 
                 @foreach ($nivel['pistas'] as $pista)
                     <div class="zona-destino absolute -translate-x-1/2 -translate-y-1/2 min-w-[5rem] h-8 px-1 border-2 border-dashed border-white bg-[#001a33]/60 rounded-lg flex items-center justify-center text-xs font-bold"
@@ -128,6 +130,14 @@
                     class="bg-yellow-400 text-[#001a33] font-bold px-8 py-3 rounded-full hover:bg-yellow-300 transition">
                     Validar
                 </button>
+                @if ($siguiente)
+                    <div class="mt-4 text-center">
+                        <a id="siguienteNivel" href="{{ $siguiente }}"
+                            class="hidden inline-block bg-white text-[#001a33] font-bold px-8 py-3 rounded-full hover:bg-gray-200 transition">
+                            Siguiente nivel <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                @endif
             </div>
         </div>
     </main>

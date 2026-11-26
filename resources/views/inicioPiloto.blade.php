@@ -12,13 +12,19 @@
 
     <x-header />
 
-    {{-- Lista de niveles: de momento solo para pintar las tarjetas --}}
+    {{-- Lista de niveles. $completados llega desde NivelController@menu --}}
     @php
         $niveles = [
-            ['numero' => 1, 'destino' => 'Madrid', 'texto' => 'Tu primer vuelo. Aprende las comunidades del centro de España.', 'abierto' => true],
-            ['numero' => 2, 'destino' => 'Zaragoza', 'texto' => 'Cruza el valle del Ebro y descubre sus ciudades.', 'abierto' => false],
-            ['numero' => 3, 'destino' => 'Santiago de Compostela', 'texto' => 'El gran vuelo hacia el noroeste de España.', 'abierto' => false],
+            ['numero' => 1, 'destino' => 'Madrid', 'texto' => 'Tu primer vuelo. Aprende las comunidades del centro de España.'],
+            ['numero' => 2, 'destino' => 'Zaragoza', 'texto' => 'Cruza el valle del Ebro y descubre sus ciudades.'],
+            ['numero' => 3, 'destino' => 'Santiago de Compostela', 'texto' => 'El gran vuelo hacia el noroeste de España.'],
         ];
+
+        // Un nivel está abierto si es el 1 o si el anterior está completado
+        foreach ($niveles as $i => $nivel) {
+            $niveles[$i]['abierto'] = $nivel['numero'] == 1 || in_array($nivel['numero'] - 1, $completados);
+            $niveles[$i]['completado'] = in_array($nivel['numero'], $completados);
+        }
     @endphp
 
     <main class="flex-1 bg-cover bg-center bg-fixed"
@@ -61,14 +67,23 @@
                 <div class="mt-8 grid gap-6 md:grid-cols-3">
                     @foreach ($niveles as $nivel)
                         <div class="rounded-2xl p-6 border {{ $nivel['abierto'] ? 'border-yellow-400 bg-white/10' : 'border-white/20 bg-white/5 opacity-70' }}">
-                            <p class="text-yellow-400 font-bold">Nivel {{ $nivel['numero'] }}</p>
+                            <div class="flex items-center justify-between">
+                                <p class="text-yellow-400 font-bold">Nivel {{ $nivel['numero'] }}</p>
+
+                                @if ($nivel['completado'])
+                                    <span class="text-green-400 text-sm font-bold">
+                                        <i class="fa-solid fa-circle-check"></i> Completado
+                                    </span>
+                                @endif
+                            </div>
+
                             <h3 class="text-xl font-extrabold mt-2">{{ $nivel['destino'] }}</h3>
                             <p class="text-sm text-white/80 mt-3">{{ $nivel['texto'] }}</p>
 
                             @if ($nivel['abierto'])
                                 <a href="{{ route('comunidades', $nivel['numero']) }}"
                                    class="block text-center mt-6 bg-yellow-400 text-[#001a33] font-bold py-2 rounded-full hover:bg-yellow-300 transition">
-                                    Despegar
+                                    {{ $nivel['completado'] ? 'Volver a jugar' : 'Despegar' }}
                                 </a>
                             @else
                                 <p class="text-center mt-6 text-white/60 font-semibold">
