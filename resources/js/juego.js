@@ -6,6 +6,17 @@ const mensaje = document.getElementById("mensaje");
 const botonValidar = document.getElementById("validar");
 const tiempo = document.getElementById("tiempo");
 const mapa = document.getElementById("mapa");
+const botonSiguiente = document.getElementById("siguienteNivel");
+
+// Avisa al servidor de que este nivel está completado
+function guardarProgreso() {
+    const token = document.querySelector('meta[name="csrf-token"]').content;
+
+    fetch(mapa.dataset.completar, {
+        method: "POST",
+        headers: { "X-CSRF-TOKEN": token },
+    });
+}
 
 // Valor por defecto seguro, por si el callback se ejecutara antes de la asignación
 let pararContador = function () {};
@@ -63,20 +74,19 @@ botonValidar.addEventListener("click", function () {
 
     if (destino.dataset.aeropuerto === recuadro.dataset.aeropuerto) {
         terminarPartida();
+        guardarProgreso();
         mensaje.className = "mt-6 text-center text-xl font-bold text-green-400";
 
         if (mapa.dataset.siguiente) {
-            // Hay otro nivel: esperamos 1,5 segundos y vamos a su mapa de comunidades
+            // Hay otro nivel: mostramos el botón, sin redirigir solos
             mensaje.textContent =
                 "¡Correcto! Has aterrizado en " +
                 recuadro.dataset.aeropuerto +
-                ". Preparando el nivel " +
-                mapa.dataset.nivelSiguiente +
-                "...";
+                ".";
 
-            setTimeout(function () {
-                window.location.href = mapa.dataset.siguiente;
-            }, 1500);
+            if (botonSiguiente) {
+                botonSiguiente.classList.remove("hidden");
+            }
         } else {
             // Último nivel
             mensaje.textContent =
