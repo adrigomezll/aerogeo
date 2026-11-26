@@ -1,7 +1,7 @@
 const CLAVE = 'aerogeo_fin_tiempo';
 const DURACION = 20; // segundos para comunidad + aeropuerto
 
-// Pone la cuenta atrás a cero (se llama en el mapa de comunidades)
+// Pone la cuenta atrás a 20 s (se llama en el mapa de comunidades)
 export function iniciarContador() {
     sessionStorage.setItem(CLAVE, Date.now() + DURACION * 1000);
 }
@@ -9,8 +9,9 @@ export function iniciarContador() {
 // Muestra los segundos que quedan y llama a alAcabar cuando lleguen a 0.
 // Devuelve una función para parar el contador.
 export function arrancarContador(elemento, alAcabar) {
-    // Por si se entra directamente a una pantalla sin pasar por comunidades
-    if (!sessionStorage.getItem(CLAVE)) {
+    // Si no hay hora de fin, o ya caducó, empezamos una cuenta nueva
+    const guardado = Number(sessionStorage.getItem(CLAVE));
+    if (!guardado || guardado <= Date.now()) {
         iniciarContador();
     }
 
@@ -21,8 +22,12 @@ export function arrancarContador(elemento, alAcabar) {
         clearInterval(intervalo);
     }
 
+    function segundosRestantes() {
+        return Math.max(0, Math.ceil((fin - Date.now()) / 1000));
+    }
+
     function actualizar() {
-        const restante = Math.max(0, Math.ceil((fin - Date.now()) / 1000));
+        const restante = segundosRestantes();
         elemento.textContent = restante;
 
         if (restante === 0) {
@@ -31,8 +36,9 @@ export function arrancarContador(elemento, alAcabar) {
         }
     }
 
+    // Valor inicial (no dispara alAcabar)
+    elemento.textContent = segundosRestantes();
     intervalo = setInterval(actualizar, 1000);
-    actualizar();
 
     return parar;
 }

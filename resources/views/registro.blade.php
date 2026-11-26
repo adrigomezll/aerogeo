@@ -35,33 +35,42 @@
                     <p class="text-slate-600">Regístrate para comenzar a explorar.</p>
                 </div>
 
-                <form method="POST" action="#" class="flex flex-col gap-5">
+                <form method="POST" action="{{ route('registro.store') }}" class="flex flex-col gap-5">
+                    @csrf
+
                     <div class="flex flex-col gap-2">
-                        <label for="name" class="text-sm font-bold text-[#002B49]">Nombre</label>
-                        <input id="name" name="name" type="text" autocomplete="name" required placeholder="Tu nombre" class="rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-[#0072CE] focus:bg-white focus:ring-2 focus:ring-[#0072CE]/20">
+                        <label for="nombre" class="text-sm font-bold text-[#002B49]">Nombre</label>
+                        <input id="nombre" name="nombre" type="text" value="{{ old('nombre') }}" autocomplete="name" required placeholder="Tu nombre" class="rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-[#0072CE] focus:bg-white focus:ring-2 focus:ring-[#0072CE]/20">
+                        @error('nombre') <p class="text-sm font-medium text-red-600">{{ $message }}</p> @enderror
                     </div>
 
                     <div class="flex flex-col gap-2">
-                        <label for="email" class="text-sm font-bold text-[#002B49]">Correo electrónico</label>
-                        <input id="email" name="email" type="email" autocomplete="email" required placeholder="tu correo@ejemplo.com" class="rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-[#0072CE] focus:bg-white focus:ring-2 focus:ring-[#0072CE]/20">
+                        <label for="correo" class="text-sm font-bold text-[#002B49]">Correo electrónico</label>
+                        <input id="correo" name="correo" type="email" value="{{ old('correo') }}" autocomplete="email" required placeholder="tu correo@ejemplo.com" class="rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-[#0072CE] focus:bg-white focus:ring-2 focus:ring-[#0072CE]/20">
+                        @error('correo') <p class="text-sm font-medium text-red-600">{{ $message }}</p> @enderror
                     </div>
 
                     <div class="grid gap-5 sm:grid-cols-2">
                         <div class="flex flex-col gap-2">
-                            <label for="password" class="text-sm font-bold text-[#002B49]">Contraseña</label>
-                            <input id="password" name="password" type="password" autocomplete="new-password" required placeholder="••••••••" class="rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-[#0072CE] focus:bg-white focus:ring-2 focus:ring-[#0072CE]/20">
+                            <label for="contrasena" class="text-sm font-bold text-[#002B49]">Contraseña</label>
+                            <input id="contrasena" name="contrasena" type="password" autocomplete="new-password" required placeholder="••••••••" class="rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-[#0072CE] focus:bg-white focus:ring-2 focus:ring-[#0072CE]/20">
+                            @error('contrasena') <p class="text-sm font-medium text-red-600">{{ $message }}</p> @enderror
                         </div>
 
                         <div class="flex flex-col gap-2">
-                            <label for="password_confirmation" class="text-sm font-bold text-[#002B49]">Repite la contraseña</label>
-                            <input id="password_confirmation" name="password_confirmation" type="password" autocomplete="new-password" required placeholder="••••••••" class="rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-[#0072CE] focus:bg-white focus:ring-2 focus:ring-[#0072CE]/20">
+                            <label for="repetir_contrasena" class="text-sm font-bold text-[#002B49]">Repite la contraseña</label>
+                            <input id="repetir_contrasena" name="repetir_contrasena" type="password" autocomplete="new-password" required placeholder="••••••••" class="rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-[#0072CE] focus:bg-white focus:ring-2 focus:ring-[#0072CE]/20">
+                            @error('repetir_contrasena') <p class="text-sm font-medium text-red-600">{{ $message }}</p> @enderror
                         </div>
                     </div>
 
-                    <label class="flex items-start gap-3 text-sm leading-relaxed text-slate-600">
-                        <input type="checkbox" name="terms" required class="mt-1 h-4 w-4 rounded border-slate-300 text-[#0072CE] accent-[#0072CE] focus:ring-[#0072CE]">
-                        <span>Acepto los términos de uso y la política de privacidad de AeroGeo.</span>
-                    </label>
+                    <div class="flex flex-col gap-2">
+                        <label class="flex items-start gap-3 text-sm leading-relaxed text-slate-600">
+                            <input type="checkbox" name="terms" required class="mt-1 h-4 w-4 rounded border-slate-300 text-[#0072CE] accent-[#0072CE] focus:ring-[#0072CE]">
+                            <span>Acepto los términos de uso y la política de privacidad de AeroGeo.</span>
+                        </label>
+                        @error('terms') <p class="text-sm font-medium text-red-600">{{ $message }}</p> @enderror
+                    </div>
 
                     <button type="submit" class="inline-flex w-full items-center justify-center rounded-full bg-[#FFD100] px-5 py-3.5 font-bold text-[#002B49] shadow-lg shadow-[#002B49]/20 transition hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-[#FFD100] focus:ring-offset-2">
                         Crear mi cuenta

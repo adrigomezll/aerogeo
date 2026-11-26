@@ -43,8 +43,8 @@
                                en el mapa y aterriza antes de que se acabe el tiempo.',
                 // Posiciones aproximadas: ajústalas a tu imagen
                 'pistas' => [
-                    ['aeropuerto' => 'Huesca-Pirineos', 'arriba' => '28%', 'izquierda' => '58%'],
-                    ['aeropuerto' => 'Zaragoza', 'arriba' => '50%', 'izquierda' => '42%'],
+                    ['aeropuerto' => 'Huesca-Pirineos', 'arriba' => '35%', 'izquierda' => '55.4%'],
+                    ['aeropuerto' => 'Zaragoza', 'arriba' => '48%', 'izquierda' => '52%'],
                     ['aeropuerto' => 'Teruel', 'arriba' => '78%', 'izquierda' => '45%'],
                 ],
             ],
@@ -59,9 +59,9 @@
                                en el mapa y aterriza antes de que se acabe el tiempo.',
                 // Posiciones aproximadas: ajústalas a tu imagen
                 'pistas' => [
-                    ['aeropuerto' => 'A Coruña', 'arriba' => '22%', 'izquierda' => '45%'],
-                    ['aeropuerto' => 'Santiago-Rosalía de Castro', 'arriba' => '45%', 'izquierda' => '40%'],
-                    ['aeropuerto' => 'Vigo', 'arriba' => '78%', 'izquierda' => '32%'],
+                    ['aeropuerto' => 'A Coruña', 'arriba' => '30.1%', 'izquierda' => '52.3%'],
+                    ['aeropuerto' => 'Santiago-Rosalía de Castro', 'arriba' => '47.3%', 'izquierda' => '48.9%'],
+                    ['aeropuerto' => 'Vigo', 'arriba' => '78.2%', 'izquierda' => '46.6%'],
                 ],
             ],
         ];

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\NivelController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,7 +11,9 @@ Route::get('/', function () {
 
 Route::get('/login', [LoginController::class, 'loginForm'])->name('login.form');
 
-Route::view('/register', 'register')->name('register');
+
+Route::get('/registro', [RegistroController::class, 'create'])->name('registro.create');
+Route::post('/registro', [RegistroController::class, 'store'])->name('registro.store');
 
 Route::view('/inicioP', 'inicioPiloto')->name('inicioPiloto');
 
