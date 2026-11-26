@@ -44,29 +44,40 @@
             <!-- Tarjeta del formulario -->
             <div class="bg-white text-gray-800 rounded-2xl shadow-2xl p-8 max-w-md">
 
-                <form id="loginForm" class="space-y-4">
+                {{-- Mensaje tras registrarse --}}
+                @if (session('success'))
+                    <p class="mb-4 text-sm font-semibold text-green-600">{{ session('success') }}</p>
+                @endif
+
+                <form method="POST" action="{{ route('login.store') }}" class="space-y-4">
+                    @csrf
 
                     <!-- Correo electrónico -->
                     <div>
-                        <label for="email" class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">
+                        <label for="correo" class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">
                             CORREU ELECTRÒNIC *
                         </label>
 
                         <input
                             type="email"
-                            id="email"
-                            name="email"
+                            id="correo"
+                            name="correo"
+                            value="{{ old('correo') }}"
                             required
                             autofocus
+                            autocomplete="email"
                             placeholder="pilot@aerogeo.es"
                             class="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-xl focus:ring-2 focus:ring-[#ffd100] p-3 outline-none transition"
                         >
+                        @error('correo')
+                            <p class="mt-1.5 text-xs font-semibold text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <!-- Contraseña -->
                     <div>
                         <div class="flex justify-between items-center mb-1.5">
-                            <label for="password" class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider">
+                            <label for="contrasena" class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider">
                                 CONTRASENYA *
                             </label>
 
@@ -78,9 +89,10 @@
                         <div class="relative">
                             <input
                                 type="password"
-                                id="password"
-                                name="password"
+                                id="contrasena"
+                                name="contrasena"
                                 required
+                                autocomplete="current-password"
                                 placeholder="••••••••"
                                 class="w-full bg-gray-50 border border-gray-200 text-gray-800 text-sm rounded-xl focus:ring-2 focus:ring-[#ffd100] p-3 pr-10 outline-none transition"
                             >
@@ -93,20 +105,9 @@
                                 <i id="eye-icon" class="fa-solid fa-eye"></i>
                             </button>
                         </div>
-                    </div>
-
-                    <!-- Recordarme -->
-                    <div class="flex items-center pt-1">
-                        <label class="flex items-center space-x-2 cursor-pointer">
-                            <input
-                                type="checkbox"
-                                name="remember"
-                                class="w-4 h-4 border-gray-300 rounded"
-                            >
-                            <span class="text-xs font-semibold text-gray-600">
-                                Recorda'm en aquest dispositiu
-                            </span>
-                        </label>
+                        @error('contrasena')
+                            <p class="mt-1.5 text-xs font-semibold text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <!-- Botón -->
@@ -142,7 +143,7 @@
 
     <script>
         function togglePassword() {
-            const passwordInput = document.getElementById('password');
+            const passwordInput = document.getElementById('contrasena');
             const eyeIcon = document.getElementById('eye-icon');
 
             if (passwordInput.type === 'password') {
@@ -153,11 +154,6 @@
                 eyeIcon.classList.replace('fa-eye-slash', 'fa-eye');
             }
         }
-
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('La funcionalitat de login encara no està disponible.');
-        });
     </script>
 
 </body>
