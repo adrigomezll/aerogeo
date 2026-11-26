@@ -15,9 +15,24 @@
                 <option value="ca" class="text-slate-900">CA</option>
                 <option value="en" class="text-slate-900">EN</option>
             </select>
-            <a href="{{ route('login.form') }}" class="rounded-full bg-[#FFD100] px-4 py-2 text-sm font-bold text-[#002B49] shadow-sm shadow-black/10 transition hover:bg-yellow-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#002B49] sm:px-5">
-                Embarcarse
-            </a>
+
+            @auth
+                <span class="hidden max-w-[10rem] truncate px-2 text-sm font-semibold text-white sm:inline">
+                    <i class="fa-solid fa-user mr-1 text-[#FFD100]"></i>
+                    {{ Auth::user()->nombre }}
+                </span>
+
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="rounded-full border border-[#FFD100] px-4 py-2 text-sm font-bold text-[#FFD100] transition-colors hover:bg-[#FFD100]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD100] focus-visible:ring-offset-2 focus-visible:ring-offset-[#002B49] sm:px-5">
+                        Cerrar sesión
+                    </button>
+                </form>
+            @else
+                <a href="{{ route('login.form') }}" class="rounded-full bg-[#FFD100] px-4 py-2 text-sm font-bold text-[#002B49] shadow-sm shadow-black/10 transition hover:bg-yellow-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#002B49] sm:px-5">
+                    Embarcarse
+                </a>
+            @endauth
         </nav>
     </div>
 </header>
